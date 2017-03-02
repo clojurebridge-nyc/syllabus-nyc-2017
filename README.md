@@ -20,6 +20,11 @@
     + using recursive functions to generate both recursive and iterative processes
     + what counts as proper tail position
     + for advanced track talk about why the JVM doesn't have TCO by default and the difference between proper tail recursion and evlis tail recursion (i.e. stack vs. register machines)
+  + `let` and `letfn`
+    + lexical scope
+    + precomputing expressions used multiple times for efficiency
+    + in Clojure, unlike other Lisps, bindings have access to previous forms
+    + in advanced track talk about using `letfn` for mutually referential functions
 + conditionals:
   + `if` and `cond`
   + for advanced cover differences between `cond`, `condp`, and `case`
