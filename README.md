@@ -14,73 +14,41 @@ This course is for individuals with coding experience seeking to translate those
 
 ### Up and Running
 
-+ Introduction to Leiningen
-  + Creating new projects
-  + The project file: `project.clj`
-  + The REPL
-+ Introduction to namespaces
-  + `(ns hello-world.core)`
-  + `(require 'hello-world.core :reload)`
++ Introduction to Leiningen (Clojure build tool)
++ Using the REPL (**R**ead **E**val **P**rint **L**oop)
++ Namespaces in Clojure
 
 ### Basics
 
-+ S-expressions
-  + Prefix notation
-  + Homoiconicity and using `quote`
-  + **Advanced Analogy**: a discussion on OOP message passing and Lisps
++ S-expressions & Homoiconicity
 + Primitive operators
-  + Math
-  + Boolean logic
-  + Strings
 + Conditionals
-  + `if` and `cond`
-  + `cond`, `condp`, and `case`
   
 ### Functions
 
-+ Defining functions
-  + `fn` and `defn`
-  + Anonymous function literals
-  + Arguments, multi-arity
++ Named Functions
++ Anonymous Functions
++ Arguments
 + Recursion
-  + `loop` and `recur`
-  + Recursive functions for both recursive and iterative processes
-  + Tail Call Optimization and the JVM (i.e. stack vs. register machines)
-+ Bindings
-  + `let` and `letfn`
-  + Lexical scope
-  + Efficiency
-  + Destructuring
++ Local Bindings & Lexical Scope
   
 ### Data Structures
 
-+ Data structures
-  + Immutable state
-  + Sequence and collection abstractions
-  + Lists, vectors, and hash-maps
-    + Implementations under the hood
-  + Sequence functions:
-    + `cons`, `conj`, `concat`, `first`, `next`, `rest`, etc.
-  + Key-value functions: 
-    + `assoc`, `assoc-in`, `update`, `update-in`, etc.
-  + Lazy-seqs
-    + `range`, `repeat`, `take`, `drop`, etc.
-    + How is lazy evaluation implemented? (thunks)
-    + Gotchas (i.e. realizing output of higher order functions)
++ Immutable state
++ Sequence and collection abstractions
++ Lists, vectors, and hash-maps
++ Sequence functions
++ Key-value functions
++ Lazy evaluation
    
 ### Higher order functions
 
-  + `map`, `reduce`, `filter`, and `apply`
-  + `for`, `doseq`, and `run!`
+  + `map`, `reduce`, `filter`, `apply`, etc.
   + Solving problems functionally
 
-### Advanced Clojure (time 
+### Advanced Clojure (time permitting)
 
 + Java interop
 + Mutability
-  + Atoms
-  + Transients
 + OOP
-  + Protocols
-  + Multimethods
 + Macros
