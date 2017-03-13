@@ -8,7 +8,7 @@ This course is for individuals with coding experience seeking to translate those
 ## Requirements
 
 + Laptop
-+ Java 1.6 or greater
++ Java 1.8 or greater
 
 ## Topics Covered
 
@@ -22,57 +22,65 @@ This course is for individuals with coding experience seeking to translate those
   + `(ns hello-world.core)`
   + `(require 'hello-world.core :reload)`
 
-### The Language
+### Basics
 
 + S-expressions
   + Prefix notation
   + Homoiconicity and using `quote`
   + **Advanced Analogy**: a discussion on OOP message passing and Lisps
-+ Functions
-  + Defining functions: `fn` and `defn`
-  + Closures: `let`
-    + Lexical scope
-    + Efficiency
-    + Destructuring
-  + Calling functions
-    + Anonymous function literals
-    + Working with first class functions
-    + Arguments, multi-arity
-  + `loop` and `recur` and `letfn`
-    + Recursive functions for both recursive and iterative processes
-    + Proper tail recursion
-    + Evlis tail recursion
-    + Tail Call Optimizations and the JVM (i.e. stack vs. register machines)
-    + Mutually referential functions
++ Primitive operators
+  + Math
+  + Boolean logic
+  + Strings
 + Conditionals
   + `if` and `cond`
   + `cond`, `condp`, and `case`
+  
+### Functions
 
++ Defining functions
+  + `fn` and `defn`
+  + Anonymous function literals
+  + Arguments, multi-arity
++ Recursion
+  + `loop` and `recur`
+  + Recursive functions for both recursive and iterative processes
+  + Tail Call Optimization and the JVM (i.e. stack vs. register machines)
++ Bindings
+  + `let` and `letfn`
+  + Lexical scope
+  + Efficiency
+  + Destructuring
+  
 ### Data Structures
 
 + Data structures
   + Immutable state
   + Sequence and collection abstractions
-  + Lazy evaluation
-    + Heads and Thunks
-    + Gotchas
-    + `range`, `repeat`, `take`, and `drop`
   + Lists, vectors, and hash-maps
-    + Implementation: S-expressions and trees
-    + **Advanced Analogy**: differences from other data structures, like C++ vectors
-    + Sequence functions: `cons`, `conj`, `concat`, `first`, `next`, `rest`, etc.
-    + Key-value functions: `assoc`, `assoc-in`, `update`, `update-in`, etc.
-+ Higher order functions:
+    + Implementations under the hood
+  + Sequence functions:
+    + `cons`, `conj`, `concat`, `first`, `next`, `rest`, etc.
+  + Key-value functions: 
+    + `assoc`, `assoc-in`, `update`, `update-in`, etc.
+  + Lazy-seqs
+    + `range`, `repeat`, `take`, `drop`, etc.
+    + How is lazy evaluation implemented? (thunks)
+    + Gotchas (i.e. realizing output of higher order functions)
+   
+### Higher order functions
+
   + `map`, `reduce`, `filter`, and `apply`
   + `for`, `doseq`, and `run!`
+  + Solving problems functionally
 
-### Advanced Clojure
+### Advanced Clojure (time 
 
-+ Interop: Java math library
++ Java interop
 + Mutability
   + Atoms
   + Transients
-+ Polymorphism
++ OOP
   + Protocols
   + Multimethods
 + Macros
