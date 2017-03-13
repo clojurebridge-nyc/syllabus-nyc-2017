@@ -20,17 +20,17 @@ This course is for individuals with coding experience seeking to translate those
 
 ### Basics
 
-+ S-expressions & Homoiconicity
++ S-expressions & homoiconicity
 + Primitive operators
 + Conditionals
   
 ### Functions
 
-+ Named Functions
-+ Anonymous Functions
++ Named functions
++ Anonymous functions
 + Arguments
 + Recursion
-+ Local Bindings & Lexical Scope
++ Local bindings & lexical scope
   
 ### Data Structures
 
@@ -43,8 +43,8 @@ This course is for individuals with coding experience seeking to translate those
    
 ### Higher order functions
 
-  + `map`, `reduce`, `filter`, `apply`, etc.
-  + Solving problems functionally
++ `map`, `reduce`, `filter`, `apply`, etc.
++ Solving problems functionally
 
 ### Advanced Clojure (time permitting)
 
