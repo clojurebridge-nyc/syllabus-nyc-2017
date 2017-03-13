@@ -1,5 +1,5 @@
 # ClojureBridge NYC: Syllabus
-# Advanced Track
+# Advanced Track - Instructors' Notes
 
 ## Course Description
 
@@ -74,7 +74,7 @@ This course is for individuals with coding experience seeking to translate those
   + `for`, `doseq`, and `run!`
   + Solving problems functionally
 
-### Advanced Clojure (time 
+### Advanced Clojure (time permitting)
 
 + Java interop
 + Mutability
