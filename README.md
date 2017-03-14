@@ -8,7 +8,7 @@ This course is for individuals with coding experience seeking to translate those
 ## Requirements
 
 + Laptop
-+ Java 1.8 or greater
++ Java 8 or greater
 
 ## Topics Covered
 
