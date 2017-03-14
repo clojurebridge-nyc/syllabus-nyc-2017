@@ -1,0 +1,49 @@
+#+Title: Cognitect vs. Railsbridge
+
+* Setup
+- CB has windows 7 and 8 guides (needs 10)
+** Cognitect
+1. Syntax
+2. Functions
+3. Ordered Collections
+4. Unordered Collections
+5. Flow Control
+6. Namespaces
+7. Sequences
+8. Polymorphism
+9. State
+
+** Clojurebridege
+1. Introduction to Programming with Clojure
+2. Simple Values
+3. Data Structures
+4. Functions
+5. Capstone App: Drawing Lines
+6. Flow Control and Logic
+7. [bonus module] Sequences
+** Projects
+1. Turtles Walk (more function study)
+2. Snowflakes (animation)
+3. Twinkle Twinkle Little Star (making sounds)
+4. Global Growth (web app with REST api)
+5. Caesar Cipher (mini exercise of Strings and Characters)
+
+Pluses for CB
+- Projects (very good if we have lots of TA's)
+- Setup guides
+- nightcode (maybe)
+Minuses
+- projects are dated
+- Needs SPA
+- phone app
+- not as much covered
+- no macros
+
+Pluses for Cognitect
+- Gorilla Repl feels like Jupyter Notebook
+- Covers more
+
+Minuses 
+- no justification of the language
+- needs more setup tutorials
+- no projects
