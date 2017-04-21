@@ -1,5 +1,5 @@
-# ClojureBridge NYC: Syllabus
-# Advanced Track
+# ClojureBridge NYC: Advanced Track Day 1
+# Syllabus Outline
 
 ## Course Description
 
