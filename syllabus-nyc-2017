@@ -1,0 +1,16 @@
+  c:/Users/ngnghm/Documents/ClojureBridgeNYC/syllabus-nyc-2017:
+  total used in directory 65 available 9902884
+  drwxrwxrwx  1 ngnghm None     0 04-23 00:56 ..
+  drwxrwxrwx  1 ngnghm None  4096 04-23 16:41 .
+  -rw-rw-rw-  1 ngnghm None  1063 04-23 00:39 advanced-track-day-1.md
+  -rw-rw-rw-  1 ngnghm None    65 04-23 00:39 advanced-track-day-2.md
+  drwxrwxrwx  1 ngnghm None  4096 04-23 16:41 .git
+* drwxrwxrwx  1 ngnghm None 12288 04-23 00:56 img
+  -rw-rw-rw-  1 ngnghm None  1070 04-23 00:56 install-fest-instructions.md
+  -rw-rw-rw-  1 ngnghm None   721 04-23 00:39 novice-track-day-1.md
+  -rw-rw-rw-  1 ngnghm None    59 04-23 00:39 novice-track-day-2.md
+  -rw-rw-rw-  1 ngnghm None   634 04-23 00:40 README.md
+* -rw-rw-rw-  1 ngnghm None 10384 04-23 16:29 setup_osx.md
+C -rw-rw-rw-  1 ngnghm None  8943 04-23 00:56 setup_ubuntu.md
+C -rw-rw-rw-  1 ngnghm None 11296 04-23 00:56 setup_win7.md
+* -rw-rw-rw-  1 ngnghm None 11175 04-23 00:56 setup_win8.md
