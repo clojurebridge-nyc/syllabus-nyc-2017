@@ -1,4 +1,4 @@
-# Data Structures
+# Data Structures: Part 1
 
 ---
 
