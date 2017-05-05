@@ -1,0 +1,72 @@
+#+Title: ClojureBridge NYC: Syllabus: Beginner Track
+
+** Course Description
+
+This course is for people with no coding experience who are trying to
+learn to code for the first time. The course is as much about solving
+problems as it is about the semantics and syntax of Clojure.
+
+** Requirements
+
+- Laptop
+- up to date operating system
+- Java 8 or greater
+
+** Topics covered
+*** Up and Running
+
++ Introduction to Leiningen (Clojure build tool)
++ Using the REPL (**R**ead **E**val **P**rint **L**oop)
++ Namespaces in Clojure
+
+*** Free and Open Source Community: Where can I find help?
++ Meetups
++ Hackers hours
+  - LispNYC
+  - ClojureNYC
++ Google the error
++ Stackoverflow
++ IRC: Freenode
+  + Webchat to IRC
+  + #Clojure channel
+  + #Clojure-beginners
+
+** [[https://github.com/ClojureBridge/welcometoclojurebridge/blob/master/outline/TURTLE-SAMPLES.md][Imperative Programming through Turtles]]
+- How to walk turtles
+  - initial state
+  - ~undo~, ~clean~ and ~home~
+  - ~state~
+  - ~doc~
+- Basic Movement - forward, backward right and left
+- Multiple turtles
+  - tilt
+- Add one more turtle and give them commands
+- Move all five turtles - Introduction to functions
+  - ~map~ higher order functions
+- Write a function that adds turtles
+- Functions with parameters
+- control flow with ~if~ to check input
+- Functions with five turtles moving in different directions
+  - use ~map~
+  - use recursion
+
+*** Design Seminar
+    - Designing your own program
+    - Collages and work flow
+    - User experience
+    - Think pair share
+      - What to do when you are stuck
+
+*** Data Structures
++ Immutable state
++ Sequence and collection abstractions
++ Lists, vectors, and hash-maps
++ Sequence functions
++ Key-value functions
++ Lazy evaluation
+  
+*** Higher order functions
+
++ ~map~, ~reduce~, ~filter~, ~apply~, etc.
++ Solving problems functionally
+
