@@ -1,0 +1,144 @@
+#+Title: Introduction to clojure
+#+Author: Evan Misshula
+#+Email: emisshula@jjay.cuny.edu
+#+Date: 2017-05
+
+#+OPTIONS: H:2 toc:t num:t
+#+TAGS:       Write(w) Update(u) Fix(f) Check(c) noexport(n) export(e)
+#+DESCRIPTION: 
+#+KEYWORDS: 
+#+LANGUAGE:  en
+#+STARTUP: beamer
+#+EXPORT_SELECT_TAGS: export(e)
+#+EXPORT_EXCLUDE_TAGS: noexport(n)
+#+LaTeX_CLASS: beamer
+#+LaTeX_CLASS_OPTIONS: [presetation]
+#+BEAMER_THEME: Madrid
+#+COLUMNS: %45ITEM %10BEAMER_ENV(Env) %10BEAMER_ACT(Act) %4BEAMER_COL(Col) %8BEAMER_OPT(Opt)
+
+* Why learn to code?
+** Why you are here
+- You will understand more about how the world around you works
+- You might be able to get a job coding
+- You will understand how to break big problems into smaller ones 
+- You will eventually build websites and phone apps
+* Why clojure?
+** What is Clojure?
+- Clojure is a hosted language that can compile to Java or Javascript
+  which allows us to build rich web or phone apps that run in many
+  environments.
+- Clojure is a functional programming language which allows us to
+  build complex solutions from simple ones.
+- Clojure has immutable data structures which makes it easier to
+  reason about programs and helps with performance
+- We can change the state of the program through a series of immutable
+  values over time
+- Clojure evaluates programs using its own types allowing us to write
+  programs that write programs
+- Clojure has an elegant way of doing asynchronos programming which is
+  necessary both for large data and uncertain execution environments
+  like the web
+* But first, we have to start small
+** Walking before we run
+- simple values
+- booleans and nil
+- keywords
+- numbers and arithmetic
+* Data structures
+** our building blocks
+- lists
+- vectors
+- maps
+* Functions
+** change the world
+- What are functions?
+- Functions that take other functions
+- Predicate functions
+- Anonymous functions
+- Pure functions
+* Building a project
+** Clojure build tools
+- Lennigen
+- the REPL
+- Namespaces
+* The turtles project
+** [[https://github.com/ClojureBridge/welcometoclojurebridge/blob/master/outline/TURTLE-SAMPLES.md][Imperative Programming through Turtles]]
+- How to walk turtles
+  - initial state
+  - ~undo~, ~clean~ and ~home~
+  - ~state~
+  - ~doc~
+** Movement
+- Basic Movement - forward, backward right and left
+- Multiple turtles
+  - tilt
+- Add one more turtle and give them commands
+- Move all five turtles - Introduction to functions
+  - ~map~ higher order functions
+** Our first programs
+- Write a function that adds turtles
+- Functions with parameters
+- control flow with ~if~ to check input
+** variations on the theme 
+- Functions with five turtles moving in different directions
+  - use ~map~
+  - use recursion
+* reconsidering theory in light of turtles
+** Data Structures revisited
++ Immutable state
++ Sequence and collection abstractions
++ Lists, vectors, and hash-maps
+** controlled evaluation
++ Sequence functions
++ Key-value functions
++ Lazy evaluation
+  
+** Higher order functions
+
++ ~map~, ~reduce~, ~filter~, ~apply~, etc.
++ Solving problems functionally
+
+* Our building blocks
+** Base data types
+- Numbers
+#+BEGIN_SRC  clojure :results output
+  '(12
+   +12
+   -100)
+#+END_SRC
+
+#+begin_src clojure :results output
+  (+ 9 1)
+#+end_src
+
+#+begin_src clojure :results output
+  [1 2 3 4]
+#+end_src
+
+#+RESULTS:
+
+#+BEGIN_SRC emacs-lisp
+  (message "Yeah!")
+#+END_SRC
+
+#+RESULTS:
+: Yeah!
+
+** Keywords
+- *Keywords* are special words that name a part of a complicated data
+  structure. They are clojures fast way to get to the data we need
+#+BEGIN_EXAMPLE
+:foobar
+:2
+:?
+#+END_EXAMPLE
+
+** Symbols
+- *Symbols* evaluate to functions or variables
+#+BEGIN_EXAMPLE
+sample-symbol
+f1
+swap!
+#+END_EXAMPLE
+
+** Strings
