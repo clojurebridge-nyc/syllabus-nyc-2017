@@ -95,6 +95,7 @@ Clojure programs are composed of s-expressions.
 
 - The parentheses ensure there is a unique parse tree for each expression.
 - "Unique readability"
+- `(predicate argument)`
 
 ---
 
@@ -187,6 +188,18 @@ A list is also a form. It is denoted by parentheses, `( )`. If the first element
 
 ---
 
+# Forms and S-expressions Revisited
+## Unevaluated Form
+
+(quote form)
+
+`'(a b c)`
+`> (a b c)`
+
+Note there is no attempt made to call the function a. The return value is a list of 3 symbols.
+
+---
+
 # S-expressions
 ## Homoiconicity
 
@@ -219,13 +232,21 @@ S-expressions are used to represent **both** source **code** and **data**.
 # Boolean
 ## Predicates
 
-Tests whether the arguments satisfy the predicate
+- `(predicate argument)`
+- Boolean forms
+    - `(false? false)` &rArr; `true`
+    - `(false? nil)` &rArr; `false`
+    - `(nil? 0)` &rArr; `false`
+    - `(true? ())` &rArr; `false`
+    - `(zero? 0)` &rArr; `true`
 
-- `(false? false)` &rArr; `true`
-- `(false? nil)` &rArr; `false`
-- `(nil? 0)` &rArr; `false`
-- `(true? ())` &rArr; `false`
-- `(zero? 0)` &rArr; `true`
+---
+
+# Boolean
+## Special Form
+
+- `(if test then else?)`
+- Evaluates *test*
 
 ---
 
@@ -254,6 +275,55 @@ Branches based on the result of a form's evaluation
 
 ---
 
+# Conditionals
+
+- `(if test then else?)`
+- `(cond & clauses)`
+- `(condp pred expr & clauses)`
+- `(case e & clauses)`
+
+---
+
+# Conditionals
+## if
+
+`=`, `>`, `>=`, `<`, `<=`, `==`, `not=`
+
+    (if (< 22 33)
+        "true"
+        "false")
+
+    > "true"
+
+---
+
+# Conditionals
+## cond
+
+- Forms as pairs
+- Returns the first logical true
+
+    (cond
+        (< -9 0) "negative"
+        (> 9 0) "positive"
+        :else "zero")
+
+    > "negative"
+
+
+---
+
+# Conditionals
+## condp
+
+
+---
+
+# Conditionals
+## case
+
+---
+
 # S-expressions
 ## Wrapping up
 
@@ -264,14 +334,3 @@ Branches based on the result of a form's evaluation
 <!-- When evaluated, they may form a word or that data. -->
 
 <!-- e.g. "COBAL" -->
-
-
----
-
-## Conditionals
-
-<!-- - `if` and `cond` -->
-
-<!-- - `cond`, `condp`, and `case` -->
-
----

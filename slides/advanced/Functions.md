@@ -13,7 +13,7 @@ Prefix notation:
 Pass a function as an argument:
 
 `(predicate arguments (predicate (predicate arguments)))`
-  
+
 ---
 
 ## First Class
@@ -125,33 +125,6 @@ Pass a function as an argument:
       (println "Required argument a is" a)
       (println "Optional argument b is" b))
 
-
-
-
----
-
-# Destructuring
-
-<!-- # Data: [Binding Forms and Destructuring](http://xahlee.info/clojure/clojure_binding_forms.html) -->
-
-<!-- ## *binding form*: syntax for local variable assignment -->
-
-<!--     (defn norm -->
-<!--         [coordinate] -->
-<!--         (let [x (nth coordinate 0) y (nth coordinate 1)] -->
-<!--             (Math/sqrt (+ (Math/pow x 2) (Math/pow y 2)) ))) -->
-
-<!--     (defn norm2 -->
-<!--         [coordinate] -->
-<!--         (let [[x y] coordinate] -->
-<!--             (Math/sqrt (+ (Math/pow x 2) (Math/pow y 2))))) -->
-
-<!--     (defn norm3 -->
-<!--         [[x y]] -->
-<!--         (Math/sqrt (+ (Math/pow x 2) (Math/pow y 2)) )) -->
-
-<!--     (norm [3 4])                            ; 5.0 -->
-
 ---
 
 ## Recursion
@@ -257,6 +230,26 @@ Pass a function as an argument:
 ---
 
 ## Bindings
+
+
+
+`(let [bindings* ] exprs*)`
+
+binding ⇒ binding-form init-expr
+
+Evaluates the exprs in a lexical context in which the symbols in the binding-forms are bound to their respective init-exprs or parts therein. The bindings are sequential, so each binding can see the prior
+bindings. The exprs are contained in an implicit do. If a binding symbol is annotated with a metadata tag, the compiler will try to resolve the tag to a class name and presume that type in subsequent
+references to the binding. The simplest binding-form is a symbol, which is bound to the entire init-expr:
+
+    (let [x 1
+          y x]
+      y)
+    -> 1
+
+See Binding Forms for more information about binding forms.
+
+Locals created with let are not variables. Once created their values never change!
+
 
 <!-- - `let` and `letfn` -->
 <!-- - Mutual recursion -->
