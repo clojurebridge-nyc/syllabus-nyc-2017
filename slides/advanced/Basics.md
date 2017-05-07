@@ -191,12 +191,11 @@ A list is also a form. It is denoted by parentheses, `( )`. If the first element
 # Forms and S-expressions Revisited
 ## Unevaluated Form
 
-(quote form)
+`(quote (+ 1 2))`
+`> (+ 1 2)`
 
 `'(a b c)`
 `> (a b c)`
-
-Note there is no attempt made to call the function a. The return value is a list of 3 symbols.
 
 ---
 
@@ -230,7 +229,7 @@ S-expressions are used to represent **both** source **code** and **data**.
 ---
 
 # Boolean
-## Predicates
+## Binary Predicates
 
 - `(predicate argument)`
 - Boolean forms
@@ -316,11 +315,36 @@ Branches based on the result of a form's evaluation
 # Conditionals
 ## condp
 
+Branches based on the result of a form's evaluation
+
+- Binary predicate (`>`, `<`, `zero?`, etc...) and expression (scalar or collection)
+- Test expression, result expression pairs
+- Default expression
+
+    (condp = 5
+      1 "one"
+      2 "two"
+      3 "three"
+      "too high")
 
 ---
 
 # Conditionals
 ## case
+
+    (case (quote ())
+      (()) "empty sequence"
+      ((1 2)) "my sequence"
+      "default")
+
+    > "empty sequence"
+
+    (case '(1 2)
+      (()) "empty sequence"
+      ((1 2)) "my sequence"
+      "case not valid")
+
+    > "my sequence"
 
 ---
 
