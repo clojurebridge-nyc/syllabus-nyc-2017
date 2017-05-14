@@ -18,7 +18,8 @@
 
 ### Note: if one wants to take and return vectors, use `mapv` instead.
 
-```(defn map 
+```
+(defn map 
   [f coll]
   (if (empty? coll)
       nil
@@ -41,7 +42,8 @@
 
 ### Note: to reduce associative collections, use `reduce-kv`.
 
-```(defn reduce 
+```
+(defn reduce 
   [f coll)
   (if (empty? coll)
       nil
@@ -60,7 +62,8 @@
 
 ### Note: if one wants to take and return vectors, use `filterv` instead.
 
-```(defn filter 
+```
+(defn filter 
   [pred coll]
   (cond 
     (empty? coll) nil
@@ -110,7 +113,8 @@
 
 ### Referred to as "for-each" or "iterate" in other languages.
 
-``` (defn run!
+``` 
+(defn run!
    [f coll] 
    (if (empty? coll) 
        nil 
