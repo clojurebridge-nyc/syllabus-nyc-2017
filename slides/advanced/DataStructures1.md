@@ -71,11 +71,11 @@
 
 &nbsp;&nbsp;&nbsp;&nbsp; - Alan Perlis, first recipient of the Turing Award
 
-## Clojure extends the "list processing" paradigm to other data structures by abstracting over them with a consistent API.
+### Clojure extends the "list processing" paradigm to other data structures by abstracting over them with a consistent API.
 
-## All data structures implement the "Collection" abstraction ("coll" for short).
+### All data structures implement the "Collection" abstraction ("coll" for short).
 
-## Abstracing data structures based on shared APIs allows Clojure to optimize them under the hood.
+### Abstracing data structures based on shared APIs allows Clojure to optimize them under the hood.
 - Even the same data structure may implement functions differently based on the number of elements.
 - For example, it's often faster to implement higher order functions with Java methods than recursive Clojure functions.
 - The Clojure compiler is a mix of Clojure and Java code, with APIs managed by Java interfaces.
@@ -87,18 +87,36 @@
 # Types of Collections
 
 ## Lists
+
   - S-expresions starting with `list` or `quote`
   - Example: `'(1 2 3)`
+  
+---
+
+# Types of Collections
+
 ## Vectors
+
   - Ordered, like lists but more performant
   - Square brackets
   - Example: `["foo" "bar" "baz"]`
+  
+---
+
+# Types of Collections
+
 ## Maps
   - Associates keys with values
   - Unordered, except for `sorted-map` and `array-map`  
   - Curly brackets
   - Example: `{:language "Clojure", :creator "Rich Hickey"}`
+  
+---
+
+# Types of Collections
+
 ## Sets
+
   - Unordered
   - Elements can only appear once
   - Curly brackets preceded with hashtag
@@ -110,6 +128,7 @@
 # Under the Hood
 
 ## All collections except for linked lists are "tries."
+
 - Name comes from "retrieval"
 - Officially pronounced like "tree," but commonly pronounced like "try" so as to avoid confusion
 - Invented in 1959, but became popularized in "Purely Functional Data Structures" (1998) by Chris Okasaki
@@ -124,6 +143,7 @@
 ![](img/hashmap.jpg)
 
 ## Maps and Sets are "hash array mapped tries" (HAMTs).
+
 - Invented by Phil Bagwell in "Ideal Hash Trees" (2000) then implemented in Scala
 - Optimized for immutable key-value storage
 - As name implies keys are hashed to ensure constant length
@@ -136,7 +156,8 @@
 
 ![](img/Vector.png)
 
-## Clojure vectors are 32-array binary search tries
+## Clojure vectors are 32-array binary search tries.
+
 - Invented by Rich Hickey based on work of Phil Bagwell
 - Binary structure means logarithmic time from root to leaf...
 - except in this case each node has up to 32 children (unlike image above)...
@@ -144,17 +165,17 @@
 - This makes large vectors extremely efficient, even into millions of elements.
 - Time complexity applies for most common operations: append, update, lookup, and taking subvectors.
 - However, _not_ for prepending: unlike lists, new elements go at the end.
+- Vectors make ideal stacks using `conj`, `pop`, and `peek`.
 
 ---
 
 # Collection Functions
 
 ## All collections share a basic API:
-
 - `=`: checks value equality of a collection compared to other collections
 - `count`: returns number of elements in a collection
   - Takes linear time so use sparingly!
-- `conj`: adds an item to a collection in the most efficient way
+- `conj`: adds an item to a collection in the most efficient way (short for "conjoin") 
   - Note: "most efficient" means in a different place for each collection type. Be careful!
 - `empty`: returns an empty collection of the same type as the argument
 - `seq`: gets a sequence of a collection
