@@ -107,22 +107,22 @@
    -100)
 #+END_SRC
 
-#+begin_src clojure :results output
-  (+ 9 1)
+#+RESULTS:
+
+
+#+begin_src clojure 
+(println  (+ 9 1))
 #+end_src
 
-#+begin_src clojure :results output
+#+RESULTS:
+: Done!
+
+#+begin_src clojure :results value
   [1 2 3 4]
 #+end_src
 
 #+RESULTS:
-
-#+BEGIN_SRC emacs-lisp
-  (message "Yeah!")
-#+END_SRC
-
-#+RESULTS:
-: Yeah!
+: Done!
 
 ** Keywords
 - *Keywords* are special words that name a part of a complicated data
@@ -142,3 +142,119 @@ swap!
 #+END_EXAMPLE
 
 ** Strings
+- *Strings* are ordered collections of characters. We denote a string
+  by putting it in double quotes
+
+#+BEGIN_SRC clojure :results output
+(print "Hi Evan")
+#+END_SRC
+
+#+RESULTS:
+: Done!
+
+** Characters 
+- *Characters* are also a type. A character is just a single letter
+- it has a backslash in front of it.
+
+** Arithmetic in Clojure
+- Computers were first used to do large arithmetic calculations.  
+- Clojure uses *prefix notation* which means the operation is at the beginning
+#+BEGIN_EXAMPLE
+(+ 1 3) 
+;;NOT (1 + 3)
+#+END_EXAMPLE
+
+** Clojure has namespaces
+- A namespace is a container that makes it easier to create unique
+  names for functions and symbols
+
+#+BEGIN_SRC clojure :results silent exports code
+radio/change station
+clojure.core/- 
+#+END_SRC
+
+** Compound data 
+- Strings put individual characters together but we will want to put
+  numbers and letters together.  Clojure has several compund data
+  structures.
+
+  1. a list '(1 2 3 4)
+
+  2. a vector [1 2 3 4]
+
+  3. a set which has only unique elements #{1 2 3}
+
+  4. a map {:evan 1, :ray 3, :jeff 2} which maps names to values. In
+     other languages this is called an associative array or a hash-map.
+
+** Clojure is functional
+
+- Clojure is a functional language.  In practical terms this means
+  that it accomplishes its work by dividing its tasks onto functions
+  which transform data from input to output.  The next few slides will
+  help us understand how to read and write our own functions.
+
+- ~defn~ defines a named functions
+
+#+BEGIN_SRC clojure :exports code
+(defn greet [name] (str "Welcome, " name))
+#+END_SRC
+
+- Our functions name is greet
+- It takes a single parameter 'name' 
+- It does not return anything, only nil
+- It prints which is considered a side effect
+
+** Multi-arity
+- A function can take different numbers of arguements 
+- Functions must be defined with ~defn~
+- Doing this twice replaces the function definition
+  - Slow down! This is strange/weird
+    - One arity c-a-n c-a-l-l a-n-o-t-h-e-r
+
+#+BEGIN_SRC clojure :results silent :exports code
+  (defn myGreeterWdefault
+    ([]     (myGreeterWdefault "Where's lunch?"))
+    ([msg]  (println msg)))
+#+END_SRC
+
+** Variadic Functions
+- /Variadic/ functions have an undefined number of parameters which
+  are collected into a sequnce and used by the function. The ampersand
+  ~&~ does not appear when you call the function.
+- The collected arguements come after a '&'
+
+#+BEGIN_SRC clojure :results silent :exports code
+(defn myGreetingWdefault [greeting & who]
+  (println greeting who))
+#+END_SRC
+
+#+BEGIN_SRC clojure :results silent :exports code
+(hello "Hello" "world" "class")
+#+END_SRC
+** Anonymous functions
+- /Anonymous/ functions can be created and called for a single purpose
+- can be defined with ~fn~ or ~#()~
+
+- So:
+#+BEGIN_SRC clojure :results silent :exports code
+  (=
+   (fn [x y] (+ x y))
+   #(+ %1 %2))
+#+END_SRC
+
+** Anonymous and variadic
+- These functions can be expressed as 
+
+#+BEGIN_SRC clojure :results silent :exports code
+  (=
+   (fn [x y & zs] (println x y zs))
+   #(println %1 %2 %&)
+  )
+#+END_SRC
+** Pure functions in Clojure
+- /Side Effects/ are ways in which the your program interacts with the
+  outside world such as printing or writitng to and reading from disk.
+  These are necessary but it is impossible to know if they will
+  succeed.
+- /Pure/ functions are ones that just return a value and have no side effects.

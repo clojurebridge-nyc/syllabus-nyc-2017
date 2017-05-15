@@ -2,63 +2,67 @@
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="#org2d168de">1. Why learn to code?</a>
+<li><a href="#orgadbcbb3">1. Why learn to code?</a>
 <ul>
-<li><a href="#org745bcbe">1.1. Why you are here</a></li>
+<li><a href="#orga8bce8f">1.1. Why you are here</a></li>
 </ul>
 </li>
-<li><a href="#orgb0b5b13">2. Why clojure?</a>
+<li><a href="#orgdf5bcf4">2. Why clojure?</a>
 <ul>
-<li><a href="#org53abda6">2.1. What is Clojure?</a></li>
+<li><a href="#org4c162fd">2.1. What is Clojure?</a></li>
 </ul>
 </li>
-<li><a href="#org5cfc793">3. But first, we have to start small</a>
+<li><a href="#org2b5e912">3. But first, we have to start small</a>
 <ul>
-<li><a href="#org10ec7db">3.1. Walking before we run</a></li>
+<li><a href="#org9271e41">3.1. Walking before we run</a></li>
 </ul>
 </li>
-<li><a href="#org7dac028">4. Data structures</a>
+<li><a href="#org5f0aa70">4. Data structures</a>
 <ul>
-<li><a href="#orge0ebabe">4.1. our building blocks</a></li>
+<li><a href="#org1d7b9dd">4.1. our building blocks</a></li>
 </ul>
 </li>
-<li><a href="#org8dc2ba7">5. Functions</a>
+<li><a href="#org2c67898">5. Functions</a>
 <ul>
-<li><a href="#org75cc19f">5.1. change the world</a></li>
+<li><a href="#orgfd66d40">5.1. change the world</a></li>
 </ul>
 </li>
-<li><a href="#org6c2fb5b">6. Building a project</a>
+<li><a href="#org06f9f23">6. Building a project</a>
 <ul>
-<li><a href="#org33fa720">6.1. Clojure build tools</a></li>
+<li><a href="#org81e1cd6">6.1. Clojure build tools</a></li>
 </ul>
 </li>
-<li><a href="#orgb600b56">7. The turtles project</a>
+<li><a href="#org2aa27e5">7. The turtles project</a>
 <ul>
-<li><a href="#org1afe8ed">7.1. Imperative Programming through Turtles</a></li>
-<li><a href="#org5825843">7.2. Movement</a></li>
-<li><a href="#orga782470">7.3. Our first programs</a></li>
-<li><a href="#orge74d339">7.4. variations on the theme</a></li>
+<li><a href="#org80b5379">7.1. Imperative Programming through Turtles</a></li>
+<li><a href="#org8adc22c">7.2. Movement</a></li>
+<li><a href="#orgcbd7821">7.3. Our first programs</a></li>
+<li><a href="#orgeea8956">7.4. variations on the theme</a></li>
 </ul>
 </li>
-<li><a href="#orga83a8db">8. reconsidering theory in light of turtles</a>
+<li><a href="#org6af91a9">8. reconsidering theory in light of turtles</a>
 <ul>
-<li><a href="#org7c94ef0">8.1. Data Structures revisited</a></li>
-<li><a href="#org529736d">8.2. controlled evaluation</a></li>
-<li><a href="#orgd2ab058">8.3. Higher order functions</a></li>
+<li><a href="#org6ce510b">8.1. Data Structures revisited</a></li>
+<li><a href="#org080a406">8.2. controlled evaluation</a></li>
+<li><a href="#orgffbcff8">8.3. Higher order functions</a></li>
 </ul>
 </li>
-<li><a href="#org2447d61">9. Our building blocks</a>
+<li><a href="#orgc0b2086">9. Our building blocks</a>
 <ul>
-<li><a href="#org9d99768">9.1. Base data types</a></li>
-<li><a href="#org0bc6b3c">9.2. Keywords</a></li>
-<li><a href="#org92ae298">9.3. Symbols</a></li>
-<li><a href="#orgcc667ee">9.4. Strings</a></li>
-<li><a href="#orgbac984d">9.5. Characters</a></li>
-<li><a href="#orgdddb24f">9.6. Arithmetic in Clojure</a></li>
-<li><a href="#orgc6e915c">9.7. Clojure has namespaces</a></li>
-<li><a href="#org00fc23e">9.8. Compound data</a></li>
-<li><a href="#orgff0dbd4">9.9. Clojure is functional</a></li>
-<li><a href="#org5da5fbe">9.10. Multi-arity</a></li>
+<li><a href="#org37b10a3">9.1. Base data types</a></li>
+<li><a href="#org38cfd16">9.2. Keywords</a></li>
+<li><a href="#org3bd7831">9.3. Symbols</a></li>
+<li><a href="#org3f7f555">9.4. Strings</a></li>
+<li><a href="#org322c71a">9.5. Characters</a></li>
+<li><a href="#org5236e5f">9.6. Arithmetic in Clojure</a></li>
+<li><a href="#org652f1f7">9.7. Clojure has namespaces</a></li>
+<li><a href="#orgd496d9e">9.8. Compound data</a></li>
+<li><a href="#org8659f80">9.9. Clojure is functional</a></li>
+<li><a href="#org420b709">9.10. Multi-arity</a></li>
+<li><a href="#orge7832dd">9.11. Variadic Functions</a></li>
+<li><a href="#org42cee46">9.12. Anonymous functions</a></li>
+<li><a href="#org3ac74eb">9.13. Anonymous and variadic</a></li>
+<li><a href="#org9a00c6c">9.14. Pure functions in Clojure</a></li>
 </ul>
 </li>
 </ul>
@@ -66,12 +70,12 @@
 </div>
 
 
-<a id="org2d168de"></a>
+<a id="orgadbcbb3"></a>
 
 # Why learn to code?
 
 
-<a id="org745bcbe"></a>
+<a id="orga8bce8f"></a>
 
 ## Why you are here
 
@@ -81,12 +85,12 @@
 -   You will eventually build websites and phone apps
 
 
-<a id="orgb0b5b13"></a>
+<a id="orgdf5bcf4"></a>
 
 # Why clojure?
 
 
-<a id="org53abda6"></a>
+<a id="org4c162fd"></a>
 
 ## What is Clojure?
 
@@ -106,12 +110,12 @@
     like the web
 
 
-<a id="org5cfc793"></a>
+<a id="org2b5e912"></a>
 
 # But first, we have to start small
 
 
-<a id="org10ec7db"></a>
+<a id="org9271e41"></a>
 
 ## Walking before we run
 
@@ -121,12 +125,12 @@
 -   numbers and arithmetic
 
 
-<a id="org7dac028"></a>
+<a id="org5f0aa70"></a>
 
 # Data structures
 
 
-<a id="orge0ebabe"></a>
+<a id="org1d7b9dd"></a>
 
 ## our building blocks
 
@@ -135,12 +139,12 @@
 -   maps
 
 
-<a id="org8dc2ba7"></a>
+<a id="org2c67898"></a>
 
 # Functions
 
 
-<a id="org75cc19f"></a>
+<a id="orgfd66d40"></a>
 
 ## change the world
 
@@ -151,12 +155,12 @@
 -   Pure functions
 
 
-<a id="org6c2fb5b"></a>
+<a id="org06f9f23"></a>
 
 # Building a project
 
 
-<a id="org33fa720"></a>
+<a id="org81e1cd6"></a>
 
 ## Clojure build tools
 
@@ -165,12 +169,12 @@
 -   Namespaces
 
 
-<a id="orgb600b56"></a>
+<a id="org2aa27e5"></a>
 
 # The turtles project
 
 
-<a id="org1afe8ed"></a>
+<a id="org80b5379"></a>
 
 ## [Imperative Programming through Turtles](https://github.com/ClojureBridge/welcometoclojurebridge/blob/master/outline/TURTLE-SAMPLES.md)
 
@@ -181,7 +185,7 @@
     -   `doc`
 
 
-<a id="org5825843"></a>
+<a id="org8adc22c"></a>
 
 ## Movement
 
@@ -193,7 +197,7 @@
     -   `map` higher order functions
 
 
-<a id="orga782470"></a>
+<a id="orgcbd7821"></a>
 
 ## Our first programs
 
@@ -202,7 +206,7 @@
 -   control flow with `if` to check input
 
 
-<a id="orge74d339"></a>
+<a id="orgeea8956"></a>
 
 ## variations on the theme
 
@@ -211,12 +215,12 @@
     -   use recursion
 
 
-<a id="orga83a8db"></a>
+<a id="org6af91a9"></a>
 
 # reconsidering theory in light of turtles
 
 
-<a id="org7c94ef0"></a>
+<a id="org6ce510b"></a>
 
 ## Data Structures revisited
 
@@ -225,7 +229,7 @@
 -   Lists, vectors, and hash-maps
 
 
-<a id="org529736d"></a>
+<a id="org080a406"></a>
 
 ## controlled evaluation
 
@@ -234,7 +238,7 @@
 -   Lazy evaluation
 
 
-<a id="orgd2ab058"></a>
+<a id="orgffbcff8"></a>
 
 ## Higher order functions
 
@@ -242,12 +246,12 @@
 -   Solving problems functionally
 
 
-<a id="org2447d61"></a>
+<a id="orgc0b2086"></a>
 
 # Our building blocks
 
 
-<a id="org9d99768"></a>
+<a id="org37b10a3"></a>
 
 ## Base data types
 
@@ -262,7 +266,7 @@
     [1 2 3 4]
 
 
-<a id="org0bc6b3c"></a>
+<a id="org38cfd16"></a>
 
 ## Keywords
 
@@ -274,7 +278,7 @@
     :?
 
 
-<a id="org92ae298"></a>
+<a id="org3bd7831"></a>
 
 ## Symbols
 
@@ -285,7 +289,7 @@
     swap!
 
 
-<a id="orgcc667ee"></a>
+<a id="org3f7f555"></a>
 
 ## Strings
 
@@ -295,7 +299,7 @@
     (print "Hi Evan")
 
 
-<a id="orgbac984d"></a>
+<a id="org322c71a"></a>
 
 ## Characters
 
@@ -303,7 +307,7 @@
 -   it has a backslash in front of it.
 
 
-<a id="orgdddb24f"></a>
+<a id="org5236e5f"></a>
 
 ## Arithmetic in Clojure
 
@@ -314,7 +318,7 @@
     ;;NOT (1 + 3)
 
 
-<a id="orgc6e915c"></a>
+<a id="org652f1f7"></a>
 
 ## Clojure has namespaces
 
@@ -325,7 +329,7 @@
     clojure.core/- 
 
 
-<a id="org00fc23e"></a>
+<a id="orgd496d9e"></a>
 
 ## Compound data
 
@@ -342,7 +346,7 @@
         other languages this is called an associative array or a hash-map.
 
 
-<a id="orgff0dbd4"></a>
+<a id="org8659f80"></a>
 
 ## Clojure is functional
 
@@ -361,9 +365,69 @@
 -   It prints which is considered a side effect
 
 
-<a id="org5da5fbe"></a>
+<a id="org420b709"></a>
 
 ## Multi-arity
 
--   if a function can take different numbers fo
+-   A function can take different numbers of arguements
+-   Functions must be defined with `defn`
+-   Doing this twice replaces the function definition
+    -   Slow down! This is strange/weird
+        -   One arity c-a-n c-a-l-l a-n-o-t-h-e-r
+
+    (defn myGreeterWdefault
+      ([]     (myGreeterWdefault "Where's lunch?"))
+      ([msg]  (println msg)))
+
+
+<a id="orge7832dd"></a>
+
+## Variadic Functions
+
+-   *Variadic* functions have an undefined number of parameters which
+    are collected into a sequnce and used by the function. The ampersand
+    `&` does not appear when you call the function.
+-   The collected arguements come after a '&'
+
+    (defn myGreetingWdefault [greeting & who]
+      (println greeting who))
+
+    (hello "Hello" "world" "class")
+
+
+<a id="org42cee46"></a>
+
+## Anonymous functions
+
+-   *Anonymous* functions can be created and called for a single purpose
+-   can be defined with `fn` or `#()`
+
+-   So:
+
+    (=
+     (fn [x y] (+ x y))
+     #(+ %1 %2))
+
+
+<a id="org3ac74eb"></a>
+
+## Anonymous and variadic
+
+-   These functions can be expressed as
+
+    (=
+     (fn [x y & zs] (println x y zs))
+     #(println %1 %2 %&)
+    )
+
+
+<a id="org9a00c6c"></a>
+
+## Pure functions in Clojure
+
+-   *Side Effects* are ways in which the your program interacts with the
+    outside world such as printing or writitng to and reading from disk.
+    These are necessary but it is impossible to know if they will
+    succeed.
+-   *Pure* functions are ones that just return a value and have no side effects.
 

@@ -47,3 +47,5 @@ Minuses
 - no justification of the language
 - needs more setup tutorials
 - no projects
+* Other projects
+- https://github.com/ClojureBridge/welcometoclojurebridge/blob/master/outline/TURTLE-SAMPLES.md
