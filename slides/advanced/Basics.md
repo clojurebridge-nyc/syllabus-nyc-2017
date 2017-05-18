@@ -2,7 +2,7 @@
  template: gaia
  -->
 
-# Clojure Bridge New York City
+# ClojureBridge New York City
 ## New York, NY
 ## Jun 02 - June 04, 2017
 
@@ -249,6 +249,15 @@ S-expressions are used to represent **both** source **code** and **data**.
 
 ---
 
+## Special Form
+
+Special forms are
+
+a. Symbols
+b. Only special when at the head of a list
+
+---
+
 # Boolean
 ## Conditionals
 
@@ -345,16 +354,3 @@ Branches based on the result of a form's evaluation
       "case not valid")
 
     > "my sequence"
-
----
-
-# S-expressions
-## Wrapping up
-
-### ![50%](img/s-expression-tree.png)
-
-
-<!-- A sequence of characters in quotation marks are just a sequence of characters. They may be encoded information that represents something else. -->
-<!-- When evaluated, they may form a word or that data. -->
-
-<!-- e.g. "COBAL" -->
