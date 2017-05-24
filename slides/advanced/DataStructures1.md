@@ -25,10 +25,10 @@
 
 #### What is it?
 - Data is not modified
-- So what happens when state is updated? 
+- So what happens when state is updated?
   - New data is created.
   - Old data still remains.
-  
+
 ---
 
 ## Immutable state
@@ -38,7 +38,7 @@
 ##### Why?
 - Makes program easier to reason about (static analysis)
 - Reduces dependence between functions: more modularity + code reuse
-- Shorter and more legible code == less bugs. 
+- Shorter and more legible code == less bugs.
 - Everything is threadsafe, allowing for implicit parallelism (no need for locks)
 
 ---
@@ -47,7 +47,7 @@
 
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;![](img/AlanKay.jpg)
 
-&nbsp;&nbsp;&nbsp;&nbsp; - Alan Kay, Lisp hacker and inventor of 
+&nbsp;&nbsp;&nbsp;&nbsp; - Alan Kay, Lisp hacker and inventor of
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Object-Oriented Programming
 
 ---
@@ -110,7 +110,7 @@ Abstracing data structures based on shared APIs allows Clojure to optimize them 
 - The Clojure compiler is a mix of Clojure and Java code, with APIs managed by Java interfaces
 - Clojure encapsulates this using parametric polymorphism in the form of _protocols_ (covered later)
 - It's important to understand what particular implementation is being used in order to write performant code, but more specific details are beyond the scope of this workshop
-- If you're interested, there's a link to the source for every function in the cheatsheet. Don't be afraid, the Clojure compiler is very accessible! 
+- If you're interested, there's a link to the source for every function in the cheatsheet. Don't be afraid, the Clojure compiler is very accessible!
 
 ---
 
@@ -124,7 +124,7 @@ Abstracing data structures based on shared APIs allows Clojure to optimize them 
 
   - S-expresions starting with `list` or `quote`
   - Example: `'(1 2 3)`
-  
+
 ---
 
 ## Types of Collections
@@ -138,7 +138,7 @@ Abstracing data structures based on shared APIs allows Clojure to optimize them 
   - Ordered, like lists but more performant
   - Square brackets
   - Example: `["foo" "bar" "baz"]`
-  
+
 ---
 
 ## Types of Collections
@@ -148,10 +148,10 @@ Abstracing data structures based on shared APIs allows Clojure to optimize them 
 
 ### Maps
   - Associates keys with values
-  - Unordered, except for `sorted-map` and `array-map`  
+  - Unordered, except for `sorted-map` and `array-map`
   - Curly brackets
   - Example: `{:language "Clojure", :creator "Rich Hickey"}`
-  
+
 ---
 
 # Types of Collections
@@ -165,7 +165,7 @@ Abstracing data structures based on shared APIs allows Clojure to optimize them 
   - Curly brackets preceded with hashtag
   - Example: `#{"clojure" "scheme" "haskell" "ocaml" "scala"}`
   - Not covered in this workshop
-  
+
 ---
 
 ## Under the Hood
@@ -190,7 +190,7 @@ Abstracing data structures based on shared APIs allows Clojure to optimize them 
 
 ---
 
-## Under the HoodMaps & Sets
+## Under the Hood: Maps & Sets
 
 ![](img/hashmap.jpg)
 
@@ -250,7 +250,7 @@ All collections share a basic API
 </br>
 </br>
 
-- `conj`: adds an item to a collection in the most efficient way (short for "conjoin") 
+- `conj`: adds an item to a collection in the most efficient way (short for "conjoin")
   - Note: "most efficient" means in a different place for each collection type. Be careful!
 - `empty`: returns an empty collection of the same type as the argument
 - `seq`: gets a sequence of a collection
@@ -258,4 +258,3 @@ All collections share a basic API
 ---
 
 ## How to Work With Lists, Vectors, and Maps Coming Up in Part II...
-
