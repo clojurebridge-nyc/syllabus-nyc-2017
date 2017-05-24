@@ -311,6 +311,7 @@ Branches based on the result of a form's evaluation
 - Forms as pairs
 - Returns the first logical true
 
+
     (cond
         (< -9 0) "negative"
         (> 9 0) "positive"
@@ -329,6 +330,11 @@ Branches based on the result of a form's evaluation
 - Binary predicate (`>`, `<`, `zero?`, etc...) and expression (scalar or collection)
 - Test expression, result expression pairs
 - Default expression
+
+---
+
+# Conditionals
+## condp
 
     (condp = 5
       1 "one"
