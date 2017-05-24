@@ -11,7 +11,7 @@
 
 Functional programming is powerful because functions can take other functions as input. We refer to these as "higher order functions."
 
-These functions allow the programmer to transform entire data structures in one compound expression, while encapsulating the implementation details. 
+These functions allow the programmer to transform entire data structures in one compound expression, while encapsulating the implementation details.
 
 For example, Google's search algorithm uses `map` and `reduce` to process extremely large data sets in parallel using large-scale distributed systems.
 
@@ -42,7 +42,7 @@ What does this mean?
 
 </br>
 
-- All of these properties reduce incidental complexity for the programmer... 
+- All of these properties reduce incidental complexity for the programmer...
 - As well as unnecessary space complexity when transforming immutable data structures
 - When zero collections are provided, they return just the transformation itself that can be passed to other functions or used to process wire data
 - Working with transducers (and even writing your own) can be extremely powerful, but is rather advanced. We'll just stick to using built-in ones
@@ -54,7 +54,7 @@ What does this mean?
 `map` applies a function to the elements of one or more collections in order and returns the results as a lazy sequence. If the collections differ in length, the input of longer ones is discarded.
 
 ```
-(defn map 
+(defn map
   [f coll]
   (if (empty? coll)
       nil
@@ -76,12 +76,12 @@ Examples:
 (map + [1 2 3] [4 5 6]) => (5 7 9)
 ```
 ```
-(map #(str "Hello " % "!" ) 
+(map #(str "Hello " % "!" )
      ["Ada" "Grace" "Barbara"])
 => ("Hello Ada!" "Hello Grace!" "Hello Barbara!")
 ```
 ```
-(map #(vector (first %) (* 2 (second %))) 
+(map #(vector (first %) (* 2 (second %)))
      {:a 1 :b 2 :c 3})
 => ([:a 2] [:b 4] [:c 6])
 ```
@@ -90,12 +90,12 @@ Examples:
 
 ## Reduce
 
-Applies a function to one or more sequential arguments in a collection, building up the result. 
+Applies a function to one or more sequential arguments in a collection, building up the result.
 - Called "fold" or "accumulate" in other languages
 - For optimal performance, uses Java Iterators on collections that implement the Iterable interface
 - Otherwise uses first/next recursion
 
-```(defn reduce 
+```(defn reduce
   [f coll)
   (if (empty? coll)
       nil
@@ -116,11 +116,11 @@ Examples:
 => (6 5 4 1 2 3)
 ```
 ```
-(defn fact [x] 
+(defn fact [x]
   (reduce *' (range 1 (inc x))))
 ```
 
-Notice an initial value can be supplied as the second argument. To reduce associative coll, use `reduce-kv`. 
+Notice an initial value can be supplied as the second argument. To reduce associative coll, use `reduce-kv`.
 
 ---
 
@@ -128,9 +128,9 @@ Notice an initial value can be supplied as the second argument. To reduce associ
 
 Takes a predicate and a collection and returns a lazy sequence of the items for which the predicate returns true.
 
-```(defn filter 
+```(defn filter
   [pred coll]
-  (cond 
+  (cond
     (empty? coll) nil
     (pred (first coll)) (conj (first coll)
                               (filter pred (rest coll)))
@@ -186,8 +186,8 @@ Examples:
 ## For
 
 
-Called "list comprehension" in Haskell and Python. Syntax is same as set-builder notation. 
-- Takes a vector of bindings, followed by keyword modifiers (`:let`, `:when`, `:while`), and output form 
+Called "list comprehension" in Haskell and Python. Syntax is same as set-builder notation.
+- Takes a vector of bindings, followed by keyword modifiers (`:let`, `:when`, `:while`), and output form
 - Iterates through all elements in the bindings according to the modifiers and returns a lazy sequence of the results
 
 ---
@@ -201,9 +201,9 @@ Examples:
 => ([a 1] [a 2] [b 1] [b 2] [c 1] [c 2])
 ```
 ```
-(for [x (range 1 6) 
-      :let [y (* x x) 
-            z (* x x x)]] 
+(for [x (range 1 6)
+      :let [y (* x x)
+            z (* x x x)]]
 => ([1 1 1] [2 4 8] [3 9 27] [4 16 64])
 ```
 ```
@@ -220,7 +220,7 @@ Examples:
 Takes a vector of bindings and a body of expressions and repeatedly executes the body with the bindings as arguments, returning `nil`. Examples:
 ```
 (doseq [x [-1 0 1]
-        y [1  2 3]] 
+        y [1  2 3]]
   (print (* x y))
 => -1 -2 -3 0 0 0 1 2 3 nil
 ```
@@ -238,13 +238,14 @@ Takes a vector of bindings and a body of expressions and repeatedly executes the
 Applies a function to each element in one collection (using reduce), generally for the purpose of side-effects.
 - Referred to as "for-each" or "iterate" in other languages.
 
-``` (defn run!
-   [f coll] 
-   (if (empty? coll) 
-       nil 
+```
+(defn run!
+   [f coll]
+   (if (empty? coll)
+       nil
       (do
-        (f (first coll)) 
-        (for-each f (next coll))))) 
+        (f (first coll))
+        (for-each f (next coll)))))
 ```
 
 ---
@@ -263,8 +264,8 @@ Examples:
 ```
 
 ```
-;; drawing line segments to canvas in ClojureScript 
-(run! 
+;; drawing line segments to canvas in ClojureScript
+(run!
   (fn [segment]
     (.lineTo ctx (start-segment segment))
     (.lineTo ctx (end-segment segment)))
