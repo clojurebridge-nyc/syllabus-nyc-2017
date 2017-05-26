@@ -4,11 +4,11 @@
 
 # ClojureBridge New York City
 ## New York, NY
-## Jun 02 - June 04, 2017
+## June 02 - 04, 2017
 
 ---
 
-# Part I: Basics
+# Basics
 
 ---
 
@@ -76,7 +76,6 @@ Clojure programs are composed of s-expressions.
     - A *symbol* for an addition function called `+`
     - Two numeric literals, `3` and `4`
 
-
 <!-- If an expression needs to be compiled, it will be. There is no separate compilation step, nor any need to worry that a function you have defined is being interpreted. Clojure has no interpreter. -->
 
 ---
@@ -142,6 +141,33 @@ Symbols are forms. They evaluate to what they name:
 &there4; Depending on the editor:
 - `inc` &rArr; `#object[clojure.core/inc ...]`
 - `inc`&rArr; `#function[clojure.core/inc]`
+
+---
+
+# Forms
+## Documentation
+
+- `doc` prints documentation for the form denoted by the symbol
+- `(use 'clojure.repl)`
+    - `(doc inc)` &rArr; `clojure.core/inc ...`
+    - `(doc +)` &rArr; `clojure.core/+ ...`
+    - `(doc 1)` &rArr; `ClassCastException java.lang.Long cannot be cast to clojure.lang.Symbol`
+
+---
+
+# Forms
+## Documentation
+
+Cheatsheet: https://clojure.org/api/cheatsheet
+
+---
+
+# Forms
+## Scalars: Java Symbols
+
+Symbols that begin with a dot to a Java class:
+
+`(.toUpperCase "ClojureBridge")` &rArr; `"CLOJUREBRIDGE"`
 
 ---
 
@@ -217,10 +243,6 @@ S-expressions are used to represent **both** source **code** and **data**.
 - A form is **code** represented as a list, which can be evaluated to yield **data**
     - `(list 1 2 3)` &rArr; `(1 2 3)`
     - Evaluates to a list, which describes a collection
-
----
-
-<!-- - Example using message passing and how Alan Kay derived OOP from LISP -->
 
 ---
 
