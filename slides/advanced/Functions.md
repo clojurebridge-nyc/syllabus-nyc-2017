@@ -44,16 +44,15 @@ Pass a function as an argument:
 # Creating Functions
 ## `fn`
 
-- `(fn [x] x)` - `(predicate argument argument)`
-- `((fn [x] x) 2)`
-    - &rArr; `2`
-    - `((predicate argument argument) argument))`
+`(fn [x] x)` - `(predicate argument argument)`
 
 ---
 
 # Creating Functions
 ## Anonymous Functions
 
+- `((fn [x] x) 2)` &rArr; `2`
+    - `((predicate argument argument) argument))`
 - Parameters can be functions
     - `((fn [x] (zero? x)) 0)` &rArr; `true`
     - `((fn [x] (zero? x)) 4)` &rArr; `false`
@@ -76,8 +75,8 @@ Pass a function as an argument:
 
 Remember:
 
-- Symbols are forms. They evaluate to what they name.
-- `inc` is a symbol that names a function
+- Symbols are forms. They evaluate to what they *name*.
+- Example: `inc` is a symbol that *names* a function
 
 ---
 
@@ -87,8 +86,7 @@ Remember:
 
 - Defines a symbol
 - `(def hello-world "Hello World!")`
-- `hello-world`
-- `> "Hello World!"`
+- `hello-world` &rArr; `"Hello World!"`
 
 ---
 
@@ -106,7 +104,9 @@ Remember:
 ## The Fast Way
 ## `defn`
 
-- `(defn double-num [x] (* x 2))` &equiv; `(def double-num (fn [x] (* x 2)))`
+`(defn double-num [x] (* x 2))` 
+&nbsp;&nbsp;&nbsp;&nbsp;&equiv; 
+`(def double-num (fn [x] (* x 2)))`
 
 ---
 
@@ -147,16 +147,11 @@ Remember:
 
 ---
 
-`do`
-
----
-
 ## Local Bindings
 ### Special Form
 ### `let`
 
 <!-- Evaluates the exprs in a lexical context in which the symbols in the binding-forms are bound to their respective init-exprs or parts therein. -->
-<!-- Let:  The exprs are contained in an implicit do -->
 
 - Immutable
 - Bindings are sequential
@@ -175,17 +170,46 @@ Remember:
 ## Local Bindings
 ### Special Form
 
-
-let:
+### `let`
 
 `(let [double (fn [x] (* 2 x))] (double 21))` &rArr; `42`
 
-letfn:
+### `letfn`
 
 `(letfn [(double [x] (* 2 x))] (double 21))` &rArr; `42`
 
 ---
 
+## Controlling Flow
+### `do`
+
+- `let` contains an implicit `do`
+- Evaluates expressions in order
+- Fundmentally *imperative*
+- Often used to create side effects (ex: print or i/o)
+
+---
+
+## Controlling Flow
+### `do`
+
+    (if true (println "This is true: ") (+ 1 1))
+    > This is true:
+    > nil 
+    > ;; nil is the return value
+
+vs.
+
+    (if true (do (println "This is true: ") (+ 1 1)))
+    > This is true:
+    > 2 
+    > ;; 2 is the return value
+
+---
+
+# Recursion
+
+---
 
 # Recursion
 
@@ -223,7 +247,7 @@ letfn:
 ---
 
 # Recursion
-## Loop and Recur
+## `loop` and `recur`
 
 - `recur` must be the last expression evaluated aka the "tail position"
 - Form: `loop` &asymp; `let`
@@ -238,8 +262,7 @@ letfn:
 ---
 
 # Recursion
-## Loop and Recur
-
+## `loop` and `recur`
 
     (def factorial
       (fn [n]
@@ -249,7 +272,7 @@ letfn:
               acc
             (recur (dec cnt) (* acc cnt))))))
 
-    (factorial 2000)0
+    (factorial 2000)
     > 18192063202303451348...
 
 
@@ -262,25 +285,23 @@ letfn:
 ---
 
 # Recursion
-## Loop and Recur
+## `loop` and `recur`
 
 Tail Recursion
 
-- ? Function calls are not duplicated on the stack
+- Function calls are not duplicated on the stack
 - Final answer obtained when the bottom of the recursive chain is reached
 - No need to climb all the way back up to the top of the chain again
 
 ---
 
 # Recursion
-## Loop and Recur
+## `loop` and `recur`
 ### `recur`
 
-- The only non-stack-consuming looping construct
+- The only non-stack-consuming looping construct in Clojure
 - Use in tail-position is verified by the compiler
-- Since Clojure uses the Java calling conventions, this optimization must be made explicit by `recur`
-
-<!-- Many such languages guarantee that function calls made in tail position do not consume stack space, and thus recursive loops utilize constant space. Since Clojure uses the Java calling conventions, it cannot, and does not, make the same tail call optimization guarantees. Instead, it provides the recur special operator, which does constant-space recursive looping by rebinding and jumping to the nearest enclosing loop or function frame. While not as general as tail-call-optimization, it allows most of the same elegant constructs, and offers the advantage of checking that calls to recur can only happen in a tail position. -->
+- Since Clojure uses the Java calling conventions, tail call optimization must be made explicit by `recur`
 
 ---
 
@@ -289,7 +310,7 @@ Tail Recursion
 
 *Imperative* - uses statements that change a program's state by describing the program's flow
 
-    var numbers = [1,2,3,4,5]
+    var numbers = [1,2,3]
     var total = 0
 
     for(var i = 0; i < numbers.length; i++) {
@@ -305,7 +326,6 @@ Note: `n` and `total` are modified in the loop
 
 *Declarative* - the function expresses the logic of a computation without describing its control flow
 
-**Equivalent Functional Solution**
 
     (fn [numbers]
       (loop [n numbers
@@ -326,5 +346,3 @@ Note: `n` and `total` are *not variables*, they are new local bindings in every 
 `(reduce + '(1 2 3))` &rArr; `6`
 
 Note: this is more idiosyncratic to Clojure, more on this later!
-
----

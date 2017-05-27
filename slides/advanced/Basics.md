@@ -20,7 +20,7 @@
 
 ---
 
-## Logic Theorist
+## :1234: Logic Theorist
 
 - Generate mathematical proofs
     - Brute force
@@ -32,15 +32,17 @@
 
 ---
 
-# The Linked List
+#  :link: The Linked List
 
 ## ![](img/linked-list.png)
 
 ---
 
-## Logic Theorist
+## :1234: Logic Theorist
+### Result
 
-Proved 38 of the first 52 theorems in Whitehead and Russell's *Principia Mathematica*, and find new and more elegant proofs for some.
+- Proved 38 of the first 52 theorems in Whitehead and Russell's *Principia Mathematica*
+- In some cases, found more elegant solutions
 
 ---
 
@@ -51,7 +53,7 @@ Proved 38 of the first 52 theorems in Whitehead and Russell's *Principia Mathema
 ---
 
 # S-expressions
-## Represented as a List
+## :link: Represented as a List
 
 ## ![](img/linked-list-addition.png)
 
@@ -112,7 +114,7 @@ Clojure programs are composed of s-expressions.
 ---
 
 # Forms
-## Scalars: Numbers
+## :1234: Scalars: Numbers
 
 Numeric literals are forms. They evaluate to themselves:
 
@@ -122,7 +124,7 @@ Numeric literals are forms. They evaluate to themselves:
 ---
 
 # Forms
-## Scalars: Strings
+## :abcd: Scalars: Strings
 
 A string is a form. It is denoted by quote marks, `" "`. They evaluate to themselves:
 
@@ -132,7 +134,7 @@ A string is a form. It is denoted by quote marks, `" "`. They evaluate to themse
 ---
 
 # Forms
-## Scalars: Symbols
+## :symbols: Scalars: Symbols
 
 Symbols are forms. They evaluate to what they name:
 
@@ -145,7 +147,7 @@ Symbols are forms. They evaluate to what they name:
 ---
 
 # Forms
-## Documentation
+## :page_facing_up: Documentation
 
 - `doc` prints documentation for the form denoted by the symbol
 - `(use 'clojure.repl)`
@@ -156,14 +158,14 @@ Symbols are forms. They evaluate to what they name:
 ---
 
 # Forms
-## Documentation
+## :page_facing_up: Documentation
 
 Cheatsheet: https://clojure.org/api/cheatsheet
 
 ---
 
 # Forms
-## Scalars: Java Symbols
+## :symbols: Scalars: Java Symbols
 
 Symbols that begin with a dot to a Java class:
 
@@ -246,10 +248,6 @@ S-expressions are used to represent **both** source **code** and **data**.
 
 ---
 
-<!-- - Syntax for Java and JavaScript Interop -->
-
----
-
 # Boolean
 ## Binary Predicates
 
@@ -273,10 +271,10 @@ S-expressions are used to represent **both** source **code** and **data**.
 
 ## Special Form
 
-Special forms are
+Special forms are:
 
-a. Symbols
-b. Only special when at the head of a list
+- Symbols
+- Only special when at the head of a list
 
 ---
 
@@ -306,16 +304,7 @@ Branches based on the result of a form's evaluation
 ---
 
 # Conditionals
-
-- `(if test then else?)`
-- `(cond & clauses)`
-- `(condp pred expr & clauses)`
-- `(case e & clauses)`
-
----
-
-# Conditionals
-## if
+## `if`
 
 `=`, `>`, `>=`, `<`, `<=`, `==`, `not=`
 
@@ -328,8 +317,9 @@ Branches based on the result of a form's evaluation
 ---
 
 # Conditionals
-## cond
+## `cond`
 
+- `(cond & clauses)`
 - Forms as pairs
 - Returns the first logical true
 
@@ -345,7 +335,7 @@ Branches based on the result of a form's evaluation
 ---
 
 # Conditionals
-## condp
+## `condp`
 
 Branches based on the result of a form's evaluation
 
@@ -356,7 +346,10 @@ Branches based on the result of a form's evaluation
 ---
 
 # Conditionals
-## condp
+## `condp`
+
+`(condp pred expr & clauses)`
+
 
     (condp = 5
       1 "one"
@@ -367,7 +360,9 @@ Branches based on the result of a form's evaluation
 ---
 
 # Conditionals
-## case
+## `case`
+
+`(case e & clauses)`
 
     (case (quote ())
       (()) "empty sequence"
@@ -376,9 +371,6 @@ Branches based on the result of a form's evaluation
 
     > "empty sequence"
 
-    (case '(1 2)
-      (()) "empty sequence"
-      ((1 2)) "my sequence"
-      "case not valid")
+    (case '(1 2) ... "default" )
 
     > "my sequence"
