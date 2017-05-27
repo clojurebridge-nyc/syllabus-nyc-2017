@@ -104,8 +104,8 @@ Remember:
 ## The Fast Way
 ## `defn`
 
-`(defn double-num [x] (* x 2))` 
-&nbsp;&nbsp;&nbsp;&nbsp;&equiv; 
+`(defn double-num [x] (* x 2))`
+&nbsp;&nbsp;&nbsp;&nbsp;&equiv;
 `(def double-num (fn [x] (* x 2)))`
 
 ---
@@ -157,13 +157,13 @@ Remember:
 - Bindings are sequential
 - Pairs: `symbols` and `init-exprs`
 
+```
+(let [x 1
+      y x]
+  y)
 
-    (let [x 1
-          y x]
-      y)
-
-    > 1
-
+> 1
+```
 
 ---
 
@@ -195,14 +195,14 @@ Remember:
 
     (if true (println "This is true: ") (+ 1 1))
     > This is true:
-    > nil 
+    > nil
     > ;; nil is the return value
 
 vs.
 
     (if true (do (println "This is true: ") (+ 1 1)))
     > This is true:
-    > 2 
+    > 2
     > ;; 2 is the return value
 
 ---
