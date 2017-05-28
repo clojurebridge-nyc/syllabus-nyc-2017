@@ -2,7 +2,7 @@
  template: gaia
  -->
 
-# Part II: Functions
+# Functions
 
 ---
 
@@ -14,7 +14,7 @@ Prefix notation:
 
 Pass a function as an argument:
 
-`(predicate arguments` 
+`(predicate arguments`
 `(predicate (predicate arguments)))`
 
 ---
@@ -42,19 +42,17 @@ Pass a function as an argument:
 ---
 
 # Creating Functions
+## `fn`
 
-`fn`
-
-- `(fn [x] x)` - `(predicate argument argument)`
-- `((fn [x] x) 2)`
-    - &rArr; `2`
-    - `((predicate argument argument) argument))`
+`(fn [x] x)` - `(predicate argument argument)`
 
 ---
 
 # Creating Functions
 ## Anonymous Functions
 
+- `((fn [x] x) 2)` &rArr; `2`
+    - `((predicate argument argument) argument))`
 - Parameters can be functions
     - `((fn [x] (zero? x)) 0)` &rArr; `true`
     - `((fn [x] (zero? x)) 4)` &rArr; `false`
@@ -75,28 +73,25 @@ Pass a function as an argument:
 # Creating Functions
 ## Symbols Revisited
 
-Remember: 
+Remember:
 
-- Symbols are forms. They evaluate to what they name.
-- `inc` is a symbol that names a function
+- Symbols are forms. They evaluate to what they *name*.
+- Example: `inc` is a symbol that *names* a function
 
 ---
 
 # Creating Functions
 ## Symbols Revisited
-
-`def`
+## `def`
 
 - Defines a symbol
 - `(def hello-world "Hello World!")`
-- `hello-world`
-- `> "Hello World!"`
+- `hello-world` &rArr; `"Hello World!"`
 
 ---
 
 # Creating Functions
-
-`def`
+## `def`
 
 - Creates or locates a **global var** with the name of **symbol**
 - Can name a scalar: `(def x 1)`: `x` &rArr; `1`
@@ -107,10 +102,11 @@ Remember:
 
 # Creating Functions
 ## The Fast Way
+## `defn`
 
-`defn`
-
-- `(defn double-num [x] (* x 2))` &equiv; `(def double-num (fn [x] (* x 2)))`
+`(defn double-num [x] (* x 2))`
+&nbsp;&nbsp;&nbsp;&nbsp;&equiv;
+`(def double-num (fn [x] (* x 2)))`
 
 ---
 
@@ -144,53 +140,76 @@ Remember:
            ". C, optional, is " c "."))
 
     (do-something 1 2)
-    
-    > "Required argument a is 1. 
+
+    > "Required argument a is 1.
        Optional argument b is 2. C, optional, is ."
 
 
 ---
 
-`do`
-
----
-
 ## Local Bindings
 ### Special Form
-
-`let`
+### `let`
 
 <!-- Evaluates the exprs in a lexical context in which the symbols in the binding-forms are bound to their respective init-exprs or parts therein. -->
-<!-- Let:  The exprs are contained in an implicit do -->
 
 - Immutable
 - Bindings are sequential
 - Pairs: `symbols` and `init-exprs`
 
+```
+(let [x 1
+      y x]
+  y)
 
-    (let [x 1
-          y x]
-      y)
-
-    > 1
-
+> 1
+```
 
 ---
 
 ## Local Bindings
 ### Special Form
 
-
-let:
+### `let`
 
 `(let [double (fn [x] (* 2 x))] (double 21))` &rArr; `42`
 
-letfn:
+### `letfn`
 
 `(letfn [(double [x] (* 2 x))] (double 21))` &rArr; `42`
 
 ---
 
+## Controlling Flow
+### `do`
+
+- `let` contains an implicit `do`
+- Evaluates expressions in order
+- Fundmentally *imperative*
+- Often used to create side effects (ex: print or i/o)
+
+---
+
+## Controlling Flow
+### `do`
+
+    (if true (println "This is true: ") (+ 1 1))
+    > This is true:
+    > nil
+    > ;; nil is the return value
+
+vs.
+
+    (if true (do (println "This is true: ") (+ 1 1)))
+    > This is true:
+    > 2
+    > ;; 2 is the return value
+
+---
+
+# Recursion
+
+---
 
 # Recursion
 
@@ -228,12 +247,12 @@ letfn:
 ---
 
 # Recursion
-## Loop and Recur
+## `loop` and `recur`
 
 - `recur` must be the last expression evaluated aka the "tail position"
 - Form: `loop` &asymp; `let`
 - Arity: the number of bindings.
- 
+
 
     (loop [x 10]
       (when (> x 1)
@@ -243,107 +262,87 @@ letfn:
 ---
 
 # Recursion
-## Loop and Recur
-
+## `loop` and `recur`
 
     (def factorial
       (fn [n]
         (loop [cnt n
                acc 1N]
-          (if (zero? cnt)
+          (if (>= 0 cnt)
               acc
             (recur (dec cnt) (* acc cnt))))))
 
-    (factorial 2000)0
+    (factorial 2000)
     > 18192063202303451348...
 
 
 <!-- 1N is a number literal called BigInt. Longs are default. A byproduct of the JVM and performance. -->
+
+<!-- Does not loop endlessly on a negative value, unlike zero? -->
 
 <!-- Integer/MAX_VALUE -->
 
 ---
 
 # Recursion
-## Loop and Recur
+## `loop` and `recur`
 
 Tail Recursion
 
-- ? Function calls are not duplicated on the stack
+- Function calls are not duplicated on the stack
 - Final answer obtained when the bottom of the recursive chain is reached
 - No need to climb all the way back up to the top of the chain again
 
 ---
 
 # Recursion
-## Loop and Recur
+## `loop` and `recur`
+### `recur`
 
-`recur`
-
-- The only non-stack-consuming looping construct
+- The only non-stack-consuming looping construct in Clojure
 - Use in tail-position is verified by the compiler
-
-<!-- - Tail call optimization and the JVM (i.e. stack vs. register machines) -->
-
----
-
-# Recursion
-## Evlis Tail Recursion
-
-- Proper tail recursion requires only that the calling environment be discarded before the actual procedure call
-- Evlis tail recursion discards the calling environment even sooner, if possible.
-
-`(defn factorial [n] (if (== 1 n)   n   (* n (factorial (- n 1)))))`
-
-`(fact 10)` and you're in the procedure call with n = 5
-
-    evalExpr
-    --------
-    env = { n: 10 } -> <top-level environment>
-    expr = '(* n (fact (- n 1)))'
-    proc = <native function: *>
-    args = [10, <pending evalExpr('(fact (- n 1))', env)>]
-
-    evalExpr
-    --------
-    env = { n: 9 } -> <top-level environment>
-    expr = '(* n (fact (- n 1)))'
-    proc = <native function: *>
-    args = [9, <pending evalExpr('(fact (- n 1))', env)>]
-
-    ...
-
-    evalExpr
-    --------
-    env = { n: 6 } -> <top-level environment>
-    expr = '(* n (fact (- n 1)))'
-    proc = <native function: *>
-    args = [6, <pending evalExpr('(fact (- n 1))', env)>]
-
-    evalExpr
-    --------
-    env = { n: 5 } -> <top-level environment>
-    expr = '(if ...)'
-
-whereas the call stack of an evlis tail-recursive interpreter would look like this:
-
-    evalExpr
-    --------
-    env = { n: 5 } -> <top-level environment>
-    pendingProcedureCalls = [
-      [<native function: *>, 10],
-      [<native function: *>, 9],
-      ...
-      [<native function: *>, 6]
-    ]
-    expr = (if ...)
-
-In this implementation, the last subexpression of a procedure call is evaluated exactly like a tail expression, but the procedure call and non-last subexpressions are pushed onto a stack. Whenever an expression is reduced to a simple one and the stack is non-empty, a pending procedure call with its other args are popped off, and it is called with the reduced expression as the final argument.
-
-Note that this didn't change the asymptotic behavior of the procedure; it still takes \(\Theta(n)\) memory to evaluate. However, only the bare minimum of information is saved: the list of pending functions and their arguments. Other auxiliary variables, and crucially the nested calling environments, aren't preserved, leading to a significant constant-factor reduction in memory.
+- Since Clojure uses the Java calling conventions, tail call optimization must be made explicit by `recur`
 
 ---
 
-### Tail Call Optimizations and the JVM
+# Recursion vs. Looping
+## Style: Declarative vs. Imperative
 
-(i.e. stack vs. register machines)
+*Imperative* - uses statements that change a program's state by describing the program's flow
+
+    var numbers = [1,2,3]
+    var total = 0
+
+    for(var i = 0; i < numbers.length; i++) {
+      total += numbers[i]
+    }
+
+Note: `n` and `total` are modified in the loop
+
+---
+
+# Recursion vs. Looping
+## Style: Declarative vs. Imperative
+
+*Declarative* - the function expresses the logic of a computation without describing its control flow
+
+
+    (fn [numbers]
+      (loop [n numbers
+             total 0]
+        (if (empty? n)
+          total
+          (recur (rest n) (+ total (first n))))))
+
+Note: `n` and `total` are *not variables*, they are new local bindings in every recursive call
+
+---
+
+# Recursion vs. Looping
+## Style: Declarative vs. Imperative
+
+**Equivalent Functional Solution**
+
+`(reduce + '(1 2 3))` &rArr; `6`
+
+Note: this is more idiosyncratic to Clojure, more on this later!

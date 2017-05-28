@@ -4,11 +4,11 @@
 
 # ClojureBridge New York City
 ## New York, NY
-## Jun 02 - June 04, 2017
+## June 02 - 04, 2017
 
 ---
 
-# Part I: Basics
+# Basics
 
 ---
 
@@ -20,7 +20,7 @@
 
 ---
 
-## Logic Theorist
+## :1234: Logic Theorist
 
 - Generate mathematical proofs
     - Brute force
@@ -32,15 +32,17 @@
 
 ---
 
-# The Linked List
+#  :link: The Linked List
 
 ## ![](img/linked-list.png)
 
 ---
 
-## Logic Theorist
+## :1234: Logic Theorist
+### Result
 
-Proved 38 of the first 52 theorems in Whitehead and Russell's *Principia Mathematica*, and find new and more elegant proofs for some.
+- Proved 38 of the first 52 theorems in Whitehead and Russell's *Principia Mathematica*
+- In some cases, found more elegant solutions
 
 ---
 
@@ -51,7 +53,7 @@ Proved 38 of the first 52 theorems in Whitehead and Russell's *Principia Mathema
 ---
 
 # S-expressions
-## Represented as a List
+## :link: Represented as a List
 
 ## ![](img/linked-list-addition.png)
 
@@ -75,7 +77,6 @@ Clojure programs are composed of s-expressions.
 - Represents a *form* when evaluated by Clojure
     - A *symbol* for an addition function called `+`
     - Two numeric literals, `3` and `4`
-
 
 <!-- If an expression needs to be compiled, it will be. There is no separate compilation step, nor any need to worry that a function you have defined is being interpreted. Clojure has no interpreter. -->
 
@@ -113,7 +114,7 @@ Clojure programs are composed of s-expressions.
 ---
 
 # Forms
-## Scalars: Numbers
+## :1234: Scalars: Numbers
 
 Numeric literals are forms. They evaluate to themselves:
 
@@ -123,7 +124,7 @@ Numeric literals are forms. They evaluate to themselves:
 ---
 
 # Forms
-## Scalars: Strings
+## :abcd: Scalars: Strings
 
 A string is a form. It is denoted by quote marks, `" "`. They evaluate to themselves:
 
@@ -133,7 +134,7 @@ A string is a form. It is denoted by quote marks, `" "`. They evaluate to themse
 ---
 
 # Forms
-## Scalars: Symbols
+## :symbols: Scalars: Symbols
 
 Symbols are forms. They evaluate to what they name:
 
@@ -142,6 +143,33 @@ Symbols are forms. They evaluate to what they name:
 &there4; Depending on the editor:
 - `inc` &rArr; `#object[clojure.core/inc ...]`
 - `inc`&rArr; `#function[clojure.core/inc]`
+
+---
+
+# Forms
+## :page_facing_up: Documentation
+
+- `doc` prints documentation for the form denoted by the symbol
+- `(use 'clojure.repl)`
+    - `(doc inc)` &rArr; `clojure.core/inc ...`
+    - `(doc +)` &rArr; `clojure.core/+ ...`
+    - `(doc 1)` &rArr; `ClassCastException java.lang.Long cannot be cast to clojure.lang.Symbol`
+
+---
+
+# Forms
+## :page_facing_up: Documentation
+
+Cheatsheet: https://clojure.org/api/cheatsheet
+
+---
+
+# Forms
+## :symbols: Scalars: Java Symbols
+
+Symbols that begin with a dot to a Java class:
+
+`(.toUpperCase "ClojureBridge")` &rArr; `"CLOJUREBRIDGE"`
 
 ---
 
@@ -220,14 +248,6 @@ S-expressions are used to represent **both** source **code** and **data**.
 
 ---
 
-<!-- - Example using message passing and how Alan Kay derived OOP from LISP -->
-
----
-
-<!-- - Syntax for Java and JavaScript Interop -->
-
----
-
 # Boolean
 ## Binary Predicates
 
@@ -251,10 +271,10 @@ S-expressions are used to represent **both** source **code** and **data**.
 
 ## Special Form
 
-Special forms are
+Special forms are:
 
-a. Symbols
-b. Only special when at the head of a list
+- Symbols
+- Only special when at the head of a list
 
 ---
 
@@ -284,16 +304,7 @@ Branches based on the result of a form's evaluation
 ---
 
 # Conditionals
-
-- `(if test then else?)`
-- `(cond & clauses)`
-- `(condp pred expr & clauses)`
-- `(case e & clauses)`
-
----
-
-# Conditionals
-## if
+## `if`
 
 `=`, `>`, `>=`, `<`, `<=`, `==`, `not=`
 
@@ -306,10 +317,12 @@ Branches based on the result of a form's evaluation
 ---
 
 # Conditionals
-## cond
+## `cond`
 
+- `(cond & clauses)`
 - Forms as pairs
 - Returns the first logical true
+
 
     (cond
         (< -9 0) "negative"
@@ -322,13 +335,21 @@ Branches based on the result of a form's evaluation
 ---
 
 # Conditionals
-## condp
+## `condp`
 
 Branches based on the result of a form's evaluation
 
 - Binary predicate (`>`, `<`, `zero?`, etc...) and expression (scalar or collection)
 - Test expression, result expression pairs
 - Default expression
+
+---
+
+# Conditionals
+## `condp`
+
+`(condp pred expr & clauses)`
+
 
     (condp = 5
       1 "one"
@@ -339,7 +360,9 @@ Branches based on the result of a form's evaluation
 ---
 
 # Conditionals
-## case
+## `case`
+
+`(case e & clauses)`
 
     (case (quote ())
       (()) "empty sequence"
@@ -348,9 +371,6 @@ Branches based on the result of a form's evaluation
 
     > "empty sequence"
 
-    (case '(1 2)
-      (()) "empty sequence"
-      ((1 2)) "my sequence"
-      "case not valid")
+    (case '(1 2) ... "default" )
 
     > "my sequence"
