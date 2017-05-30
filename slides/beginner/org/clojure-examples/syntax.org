@@ -258,3 +258,145 @@ clojure.core/-
   These are necessary but it is impossible to know if they will
   succeed.
 - /Pure/ functions are ones that just return a value and have no side effects.
+
+** Currying or Applying functions
+- /apply or curry/ a function is to invoke it with one or more fixed arguments.
+
+- For example we could have a function that takes 3 arguments
+
+#+BEGIN_SRC clojure :results silent :exports code
+  (=
+   ((defn myThreeFn (fn [x y z] (+ x y z))) '(2 4 6))
+   (apply myThreeFn 2 '(4 6))
+   (apply myThreeFn 2 4 '(6))
+  )
+#+END_SRC
+
+** Sometimes it useful to have local bindings
+- local binding take precedence over global value
+
+#+BEGIN_SRC clojure :results silent :exports code
+ (let [myImmutableName value] 
+   (my-program that uses myImmutableName))
+#+END_SRC
+
+- This is known as *lexical scope*
+
+** Ordered collections
+- Vector
+#+BEGIN_SRC clojure :results silent :exports code
+  (= [1 2 3]
+    (vector 1 2 3)
+   )
+#+END_SRC
+
+** Vectors are accessible by index
+- indexe start at 0
+- if index is out of range, the function returns nil
+#+BEGIN_SRC clojure :results silent :exports code
+  (= "my"
+   (get 
+    ["my" false 3]
+    0)
+   )
+#+END_SRC
+
+** To get the number of elements in a vector we use 
+- the *count* function (as opposed to length in other languages)
+
+#+BEGIN_SRC clojure :results silent :exports code
+  (= 3
+   (count
+    ["my" false 3])
+   )
+#+END_SRC
+
+** Two ways to build a vector
+#+BEGIN_SRC clojure :results silent :exports code
+(=
+ [1 6 12]
+ (vector 1 6 12)
+)
+#+END_SRC
+
+** We append elements to the end of a vector with
+- *conjoin*
+#+BEGIN_SRC clojure :results silent :exports code
+(=
+ [1 6 12 18 24]
+  (conj [1 6 12] 18 24)
+)
+#+END_SRC
+
+- Remember vectors are immutable
+- A function that changes a vector creates a new one.
+
+** Lists
+ - add new elements at the head not tail (vector)
+ - lists are evaluated so we add a quote in front to prevent evaluation
+ - lists are not indexed so we to an element by invoking ~rest~ and ~first~
+
+** Sets
+ - unordered collection of unique elements
+ - ~conj~ adds an element
+ - ~disj~ removes an element
+ - ~contains?~ checks if an element is present
+
+** Maps
+ - keys and values
+ - commas are optional
+ - add new pair with ~assoc~ (short for "associate")
+ - remove new pair with ~disassoc~ (short for "disassociate")
+ - if you know the function contains a value for a key
+   - you can look it up by using the key as a "getter"
+
+** More map functions
+   - if you don't know if the map contains a value for the key 
+     - add a default parameter
+     - or use ~contains?~
+
+** Zipmap can be used to contruct a map
+#+BEGIN_SRC clojure :results silent :exports code
+(def salesteam #{"Alice" "Steve" "Pierre"})
+
+(def initial-sales (zipmap salesteam (repeat 0))) 
+#+END_SRC
+
+** We can compbine maps with 
+- ~merge~ functions
+- or ~merge-with~ if we have overlapping keys
+  - for example, one common usage:
+     - if we pass ~+~ it will add the values if the key is the same
+
+** Record notation
+   - We can use maps to represent complex entitie
+#+BEGIN_SRC clojure :results silent :exports code
+  (def student {
+    :student-id 1234
+    :first-name "Fadil"
+    :last-name "Cox"
+    :major "Computer Science"
+    :graduation 2017}
+    )
+#+END_SRC
+
+** Accessing record data
+- We simply use the key to access data
+#+BEGIN_SRC clojure :results silent :exports code
+  (:graduation student)
+#+END_SRC
+
+** Nested maps 
+- Maps can be nested 
+  - here the address is nested within the company
+  - the ~get-in~ function is useful to access fields at any level of nesting
+#+BEGIN_SRC clojure :results silent :exports code
+  (def company {
+    :name "myCo" 
+    :addres {
+       :street "200 Fifth Ave"
+       :city "New York"
+       :state "New York"
+    }})
+    (get-in company [:address :city])
+#+END_SRC
