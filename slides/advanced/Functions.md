@@ -36,7 +36,7 @@ Pass a function as an argument:
 - Pure function: compiled &rarr; evaluated &rarr; result
 - Side effects
     - Possible in Clojure
-    - Do not change the program's state, unless **explicitly** made to do so
+    - Do not change the program's state, unless *explicitly* made to do so
     - Example: `println`
 
 ---
@@ -52,7 +52,7 @@ Pass a function as an argument:
 ## Anonymous Functions
 
 - `((fn [x] x) 2)` &rArr; `2`
-    - `((predicate argument argument) argument))`
+    - `((predicate argument argument) argument)`
 - Parameters can be functions
     - `((fn [x] (zero? x)) 0)` &rArr; `true`
     - `((fn [x] (zero? x)) 4)` &rArr; `false`
@@ -63,7 +63,7 @@ Pass a function as an argument:
 ## Anonymous Functions
 
 - `#()` - for short functions passed as arguments
-    - It takes arguments named `%`, `%2`, `%3`, `%n` ... `%&`.
+    - It takes arguments named `%`, `%2`, `%3` ... `%n`.
     - `(#(* 2 %) 3)` &rArr; `6`
     - `((fn [x] (even? x)) (#(* 2 %) 3))` &rArr; `true`
 - An anonymous function has no name, so you don't know what to "call" it!
@@ -71,12 +71,45 @@ Pass a function as an argument:
 ---
 
 # Creating Functions
-## Symbols Revisited
+## Forms Revisited
 
-Remember:
+> A form can be converted into a function if we can determine the correspondence between the *variables* occurring in the *form* and the *ordered list of arguments* of the desired function.
 
-- Symbols are forms. They evaluate to what they *name*.
-- Example: `inc` is a symbol that *names* a function
+**John McCarthy** *Recursive Functions of Symbolic Expressions and Their Computation by Machine, Part I* (1960)
+
+---
+
+# Creating Functions
+## Forms Revisited &rarr; Functions
+
+- `((fn [x y] (* (* 2 y) x)) -1 6)` &rArr; `-12`
+    - *Form* - `(* (* 2 y) x)`
+    - *Variables* - `[x y]`
+    - *Ordered list of arguments* - `-1 6`
+
+---
+
+# Creating Functions
+## Symbolic Expressions vs. Functions
+
+Symbolic expressions are:
+
+1. Atomic symbols
+    - `> 3` &rArr; `3`
+    - `> 3 y` (two expressions, not one)
+        - &rArr; `3`
+        - &rArr; `Unable to resolve symbol: y`
+
+---
+
+# Creating Functions
+## Symbolic Expressions vs. Functions
+
+Symbolic expressions are:
+
+2. Formed by using the special characters `(`, `)`, and an infinite set of distinguishable atomic symbols separated by blanks.
+    - `'(3 4)` &rArr; `(3 4)`
+    - A single form
 
 ---
 
@@ -84,7 +117,7 @@ Remember:
 ## Symbols Revisited
 ## `def`
 
-- Defines a symbol
+- **Def**ines a symbol
 - `(def hello-world "Hello World!")`
 - `hello-world` &rArr; `"Hello World!"`
 
@@ -101,12 +134,26 @@ Remember:
 ---
 
 # Creating Functions
+## Symbols Revisited
+
+- Symbols are forms. They evaluate to what they *name*.
+- Example: `inc` and `+` are symbols that *name* a function
+    - `(inc 2)` &rArr; `3`
+    - `(+ 2 1)` &rArr; `3`
+    - `inc` &rArr; `#object[clojure.core$inc...]`
+
+---
+
+# Creating Functions
 ## The Fast Way
 ## `defn`
 
 `(defn double-num [x] (* x 2))`
 &nbsp;&nbsp;&nbsp;&nbsp;&equiv;
 `(def double-num (fn [x] (* x 2)))`
+
+    (double-num 3)
+    > 6
 
 ---
 
@@ -153,12 +200,11 @@ Remember:
 
 <!-- Evaluates the exprs in a lexical context in which the symbols in the binding-forms are bound to their respective init-exprs or parts therein. -->
 
-- Immutable
 - Bindings are sequential
 - Pairs: `symbols` and `init-exprs`
 
 ```
-(let [x 1
+(let [x (+ 1 0)
       y x]
   y)
 
@@ -183,7 +229,7 @@ Remember:
 ## Controlling Flow
 ### `do`
 
-- `let` contains an implicit `do`
+- `let` is an implicit `do`
 - Evaluates expressions in order
 - Fundmentally *imperative*
 - Often used to create side effects (ex: print or i/o)
@@ -207,11 +253,38 @@ vs.
 
 ---
 
-# Recursion
+## Controlling Flow and Scope
+
+```
+(defn y [] 
+  (let [x 1]
+    (println x)
+    (def x 2) 
+    x)) 
+```
+&rArr; `1`
+
+```
+(defn y [] 
+  (let [x 1]
+    (println x)
+    (def x 2) 
+    x)
+  x)
+```
+&rArr; `2`
 
 ---
 
-# Recursion
+# :arrows_counterclockwise: Recursion
+
+---
+
+# :arrows_counterclockwise: Recursion
+
+- Each recursive call is added to the stack
+- Each function is sequentially popped after the final call
+ 
 
     (defn factorial
      [n]
@@ -222,14 +295,12 @@ vs.
     (factorial 10)
     > 3628800
 
-    (factorial 20000)
+    (factorial 5000)
     > ERROR: Stack Overflow
-
-<!-- Each recursive call is sequentially added to the stack, until we get to the final call, at which point the result is returned and the stack is popped, one function return at a time. -->
 
 ---
 
-# Recursion
+# :arrows_counterclockwise: Recursion
 ## Mutual recursion
 
     (letfn [(is-even? [n]
@@ -246,7 +317,7 @@ vs.
 
 ---
 
-# Recursion
+# :arrows_counterclockwise: Recursion
 ## `loop` and `recur`
 
 - `recur` must be the last expression evaluated aka the "tail position"
@@ -261,7 +332,7 @@ vs.
 
 ---
 
-# Recursion
+# :arrows_counterclockwise: Recursion
 ## `loop` and `recur`
 
     (def factorial
@@ -272,9 +343,8 @@ vs.
               acc
             (recur (dec cnt) (* acc cnt))))))
 
-    (factorial 2000)
-    > 18192063202303451348...
-
+    (factorial 5000)
+    > 42285779266055435222...
 
 <!-- 1N is a number literal called BigInt. Longs are default. A byproduct of the JVM and performance. -->
 
@@ -282,20 +352,10 @@ vs.
 
 <!-- Integer/MAX_VALUE -->
 
----
-
-# Recursion
-## `loop` and `recur`
-
-Tail Recursion
-
-- Function calls are not duplicated on the stack
-- Final answer obtained when the bottom of the recursive chain is reached
-- No need to climb all the way back up to the top of the chain again
 
 ---
 
-# Recursion
+# :arrows_counterclockwise: Recursion
 ## `loop` and `recur`
 ### `recur`
 
@@ -345,4 +405,4 @@ Note: `n` and `total` are *not variables*, they are new local bindings in every 
 
 `(reduce + '(1 2 3))` &rArr; `6`
 
-Note: this is more idiosyncratic to Clojure, more on this later!
+Note: this is idiomatic Clojure, more on this later!
