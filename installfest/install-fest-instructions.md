@@ -787,27 +787,7 @@ Next, go back to [the Leiningen Windows installer site](http://leiningen-win-ins
 
 ## Install Nightcode
 
-Go to the [Nightcode release site](http://github.com/oakes/Nightcode/releases).
-
->**Note:** Do NOT go to the main Nightcode page and download the most recent version. The most recent version is Nightcode 2.0.1 (released July 2016), but we will be using a slightly older one (Nightcode 1.3.2) because the new one just came out and might be a little unstable. Plus the user interfaces of the two versions are a bit different, and the current ClojureBridge instructional materials are written for the older one.
-
-On the [Nightcode release site](http://github.com/oakes/Nightcode/releases), you should see version numbers and links to download specific version of Nightcode.
-
-Scroll down to the heading "1.3.2", and click the download link labeled `nightcode-1.3.2-standalone.jar`.
-
-Once the download is finished, we want to start the editor.
-
-To start it up, go into your Downloads folder (or wherever you save files from your browser) and run the `nightcode-1.3.2-standalone.jar` file using the `java` command.
-
-Open a command prompt and run the following commands:
-
-```bash
-cd ~/Downloads/
-java -jar nightcode-1.3.2-standalone.jar
-```
-
-![Nightcode](img/nightcode-startup.png)
-
+Download the lastest version (2.3.3) for Windows from the [Nightcode site](https://sekao.net/nightcode/). Click on downloaded file to install.
 
 ## Test your setup
 
@@ -855,18 +835,13 @@ prompt. Then, the command prompt will show you the following message: `user=> By
 
 #### Testing Nightcode
 
-If Nightcode isn't started yet or closed, open it by typing the command on the command prompt:
-
-```bash
-java -jar nightcode-1.3.2-standalone.jar
-```
-
 At the bottom left of the screen, type `(+ 1 1)` into the window. It should look like the following image:
 
 <img src="img/nightcode-repl.png" alt="Testing Nightcode" width="500">
 
 If you see the result, 2, that worked, great!
 
+<div style="page-break-after: always;"></div>
 
 #### Testing apps
 
