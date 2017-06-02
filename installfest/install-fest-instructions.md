@@ -401,7 +401,7 @@ prompt. Then, the terminal will show you the following message: `user=> Bye for 
 If Nightcode isn't started yet or closed, open it by typing the command on terminal:
 
 ```bash
-java -jar nightcode-1.3.2-standalone.jar
+java -jar nightcode-2.3.3-standalone.jar
 ```
 
 At the bottom left of the screen, type `(+ 1 1)` into the window. It should look like the following image:
